@@ -1,0 +1,549 @@
+/***** ОБЩИЕ СТИЛИ (начало) *****/
+html {
+    font-size: 17px;
+}
+
+body {
+    margin: 0;
+
+    font-family: "Ubuntu", sans-serif;
+    font-weight: normal;
+    color: #041032;
+
+    background-color: #f4f6fb;
+}
+
+p {
+    font-family: "Roboto", sans-serif;
+    font-weight: normal;
+    line-height: 150%;
+}
+
+h1,
+h2,
+h3,
+p {
+    margin: 0;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    font-weight: bold;
+    text-decoration: none;
+    color: #4050a5;
+
+    transition: all 0.25s;
+}
+
+a:hover {
+    color: #ef5e42;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+}
+
+.btn {
+    position: relative;
+    display: inline-block;
+    padding: 18px 48px;
+
+    text-transform: uppercase;
+    font-size: 15px;
+    font-weight: bold;
+    color: #ffffff;
+    
+    border-radius: 30px;
+    background-color: #ef5e42;
+}
+
+.btn:hover {
+    color: #ffffff;
+    background-color: #ef8042;
+}
+
+.btn:active {
+    color: #ffffff;
+    background-color: #b54029;
+}
+
+.btn::before {
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    content: "";
+
+    border: 2px solid #041032;
+    border-radius: 30px;
+
+    transform: rotate(-3deg);
+    transition: all 0.5s;
+}
+
+.btn:hover::before {
+    transform: rotate(3deg);
+}
+
+.btn:active::before {
+    transform: rotate(0);
+}
+
+.btn-circle {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 12px;
+
+    width: 60px;
+    height: 60px;
+
+    border-radius: 100%;
+    background-color: #ef5e42;
+
+    transition: all 0.25s;
+}
+
+.btn-circle:hover {
+    cursor: pointer;
+    background-color: #ef8042;
+}
+
+.btn-circle:active {
+    background-color: #b54029;
+}
+
+.btn-circle-play,
+.btn-circle-plus {
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.btn-circle-play {
+    background-color: #88caff;
+    background-image: url("../img/icon-play.svg");
+}
+
+.btn-circle-play:hover {
+    background-color: #a7d5fb;
+}
+
+.btn-circle-play:active {
+    background-color: #31a1fd;
+}
+
+.btn-circle-plus {
+    background-image: url("../img/icon-plus.svg");
+}
+
+.btn-circle::before {
+    box-sizing: border-box;
+    position: absolute;
+    top: 3px;
+    left: -7px;
+
+    width: 73px;
+    height: 56px;
+
+    content: "";
+
+    border: 2px solid #041032;
+    border-radius: 100%;
+
+    transform: rotate(10deg);
+
+    transition: all 0.5s;
+}
+
+.btn-circle:hover::before {
+    transform: rotate(-180deg);
+}
+
+.btn-circle:active::before {
+    width: 100%;
+    height: 100%;
+
+    top: 0;
+    left: 0;
+}
+
+.title {
+    font-size: 42px;
+    font-weight: bold;
+}
+/***** ОБЩИЕ СТИЛИ (конец) *****/
+
+/***** HEADER (начало) *****/
+header {
+    padding: 30px 0;
+}
+
+header .container {
+    align-items: center;
+}
+
+.main-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 740px;
+}
+
+.main-menu > li:not(.burger-menu) {
+    display: inline-block;
+}
+
+.main-menu a:not(.btn) {
+    font-size: 20px;
+}
+
+.burger-menu {
+    display: none;
+}
+/***** HEADER (конец) *****/
+
+/***** Секция PROMO (начало) *****/
+.promo {
+    box-sizing: border-box;
+    height: 627px;
+    padding: 55px 0;
+
+    background-image: url("../img/promo/bg-promo.svg");
+    background-repeat: repeat-x;
+    background-position: 0 bottom;
+}
+
+.promo-content {
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    min-width: 500px;
+    height: 390px;
+}
+
+.promo-content .title {
+    width: 391px;
+    letter-spacing: -0.2px;
+}
+
+.promo-content strong {
+    color: #ef5e42;
+}
+
+.promo-content p {
+    font-size: 20px;
+}
+
+.promo-content .btn-play {
+    margin-left: 22px;
+
+    font-size: 15px;
+    text-transform: uppercase;
+    color: #041032;
+}
+
+.promo-content .btn-play:hover {
+    color: #ef5e42;
+}
+
+.promo .promo-img {
+    position: relative;
+    z-index: 1;
+    top: -36px;
+    right: 140px;
+}
+/***** Секция PROMO (конец) *****/
+
+/***** Секция COMPANIES (начало) *****/
+.companies {
+    margin-top: -50px;
+    padding: 80px 0;
+    background-color: #ffffff;
+}
+
+.companies .container {
+    flex-direction: column;
+}
+
+.companies .title {
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.companies .companies-list {
+    display: flex;
+    justify-content: space-between;
+}
+/***** Секция COMPANIES (конец) *****/
+
+/***** Секция STEPS (начало) *****/
+.steps {
+    padding: 90px 0;
+}
+
+.steps .container {
+    justify-content: center;
+}
+
+.steps-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 1220px;
+}
+
+.steps-content > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 370px;
+    min-height: 320px;
+}
+
+.steps-header .title {
+    margin-bottom: 25px;
+
+    line-height: 150%;
+    text-align: center;
+}
+
+.steps-header .btn::after {
+    position: absolute;
+    top: -35px;
+    left: -25px;
+
+    width: 280px;
+    height: 110px;
+
+    content: "";
+
+    background-image: url("../img/btn_bg.svg");
+    background-repeat: no-repeat;
+}
+
+.steps-item img {
+    height: 136px;
+}
+
+.steps-item h3 {
+    margin: 22px 0;
+    font-size: 24px;
+}
+
+.steps-item p {
+    text-align: center;
+}
+/***** Секция STEPS (конец) *****/
+
+/***** Секция PORTFOLIO (начало) *****/
+.portfolio {
+    box-sizing: border-box;
+    height: 1055px;
+    padding-top: 85px;
+    padding-bottom: 120px;
+
+    background-image: url("../img/portfolio/bg.svg");
+    background-repeat: repeat-x;
+}
+
+.portfolio-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.portfolio-content .title {
+    margin-bottom: 52px;
+    text-align: center;
+    color: #ffffff;
+}
+
+.portfolio-content .portfolio-list {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.portfolio-list .list-item {
+    box-sizing: border-box;
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 25px;
+    padding-left: 30px;
+    padding-bottom: 25px;
+
+    min-width: 411px;
+    min-height: 357px;
+
+    border-radius: 10px;
+    background-color: #fff;
+    background-repeat: no-repeat;
+}
+
+.portfolio-list .list-item:nth-child(n + 4) {
+    margin-bottom: 0;
+}
+
+.description a,
+.description p {
+    font-size: 20px;
+}
+
+.description a {
+    margin-bottom: 8px;
+}
+
+.portfolio-list .item-one {
+    background-image: url("../img/portfolio/photo-1.svg");
+}
+
+.portfolio-list .item-two {
+    background-image: url("../img/portfolio/photo-2.svg");
+}
+
+.portfolio-list .item-three {
+    background-image: url("../img/portfolio/photo-3.svg");
+}
+
+.portfolio-list .item-four {
+    background-image: url("../img/portfolio/photo-1.svg");
+}
+
+.portfolio-list .item-five {
+    background-image: url("../img/portfolio/photo-2.svg");
+}
+
+.portfolio-list .item-content {
+    display: flex;
+    align-items: center;
+    min-height: 90px;
+}
+
+.item-content .btn-circle {
+    margin-right: 25px;
+    background-color: #ef5e42;
+}
+
+.item-content .btn-circle:hover {
+    background-color: #ef8042;;
+}
+
+.item-content .btn-circle:active {
+    background-color: #b54029;
+}
+
+.item-content .btn-circle::after {
+    position: absolute;
+    top: -15px;
+    left: -15px;
+
+    width: 90px;
+    height: 90px;
+
+    content: "";
+
+    border: 1px solid #ef5e42;
+    border-radius: 100%;
+    opacity: 35%;
+}
+
+.portfolio-list .item-end {
+    position: relative;
+    justify-content: center;
+    align-items: center;
+}
+
+.portfolio-list .item-end::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    content: "";
+
+    border: 2px solid #041032;
+    border-radius: 10px;
+
+    transform: rotate(1.5deg);
+
+    transition: all 0.5s;
+}
+
+.item-end:hover::before {
+    transform: rotate(-1.5deg);   
+}
+
+.item-end .item-content {
+    flex-direction: column;
+}
+
+.item-end .btn-play {
+    margin-bottom: 24px;
+}
+
+.item-end .link {
+    position: relative;
+    color: #041032;
+    font-size: 24px;
+}
+
+.item-end .link:hover {
+    color: #ef5e42;
+    transform: scale(1.05);
+}
+
+.item-end .link::before {
+    position: absolute;
+    top: -25px;
+    left: -5px;
+
+    width: 202px;
+    height: 68px;
+
+    content: "";
+
+    background-image: url("../img/portfolio/bg-plus.svg");
+    background-repeat: no-repeat;
+}
+
+/***** Секция PORTFOLIO (конец) *****/
+
+/***** Секция ADVANTAGES (начало) *****/
+/***** Секция ADVANTAGES (конец) *****/
+
+/***** Секция REVIEWS (начало) *****/
+/***** Секция REVIEWS (конец) *****/
+
+/***** FOOTER (начало) *****/
+/***** FOOTER (конец) *****/
+
+/***** MEDIA (начало) *****/
+@media (max-width: 992px) {
+    .burger-menu {
+        display: block;
+    }
+}
+
+@media (min-width: 1300px) {
+    .container {
+        max-width: 1290px;
+    }
+}
+/***** MEDIA (конец) *****/
