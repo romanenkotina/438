@@ -50,6 +50,54 @@
 
 // //string, number, boolean, Array, Object, Function
 
+// Финальный вариант кнопки
+
+let button = {
+  id: "generateBtn",
+  text: "Купить",
+  class: "btn animate__animated",
+  isBorder: false
+};
+
+//select - селектор тега (типа)
+//.select - селектор класса
+//select option - контекстный селектор (селектор потомков)
+//.menu .item-menu - контекстный селектор (селектор потомков)
+//select > option - дочерний селектор
+//[type] - селектор по атрибуту
+//[type="checkbox"] - селектор по атрибуту
+//select + p - соседний селектор (найди p, который сразу за select)
+//select ~ p - соседи
+
+let select = document.getElementById("variantsButton");
+let div = document.querySelector(".buttons");
+let btn;
+
+select.addEventListener("input", () => {
+  if(document.getElementById(button.id)) {
+     btn.className = `${button.class} ${select.value}`;
+     btn.classList.add("animate__bounceIn");
+
+     setTimeout(()=>{
+        btn.classList.remove("animate__bounceIn");
+     }, 1000);
+  }
+  else {
+     btn = document.createElement("button");
+     btn.id = button.id;
+     btn.textContent = button.text;
+     btn.className = `${button.class} ${select.value}`;
+
+     btn.classList.add("animate__backInDown");
+
+     setTimeout(() => {
+        btn.classList.remove("animate__backInDown");
+     }, 2000);
+
+     div.insertAdjacentElement("afterend", btn);
+  }
+});
+
 // /*** ОБЪЕКТЫ (конец) ***/
 
 
