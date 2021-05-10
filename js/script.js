@@ -1,3 +1,106 @@
+// Примитивные
+//string "123"
+//number 12; 14.6
+//boolean true/false
+//null
+//undefined
+//symbol
+
+//Сложные
+//object ==> массивы, объекты, функции
+
+/*** МЕТОДЫ МАССИВА
+1) push / unshift - добавление эл-та(ов) в конец/начало массива
+2) pop / shift - удаление последнего/первого элемента в массиве
+3) slice() - без параметров создаёт полную копию массива
+   slice(0, 3) - выбирает элементы с 0-го до 3-го (не включая)
+   slice(0, -2) - выбирает элементы с 0-го до конца массива, кроме последних 2-х
+4) splice(0, 3) - удаляет 3 элемента с начала
+   splice(-3, 3) - удаляет 3 элемента с конца
+   splice(0, 3, 1000, 2000) - удаляет 3 элемента с начала и вставляет 2 новых (1000 и 2000)
+***/
+
+// let assocMas = new Map([
+//   ["number", 1000],
+//   ["city", "Москва"],
+//   ["flag", true]
+// ]);
+
+// assocMas.set("date", "28.04.2021"); //создать элемент с ключом "date"
+// console.log(assocMas.get("date")); //вернуть значение по ключу "date"
+// console.log(assocMas.size); //длина массива
+
+// assocMas.delete("number"); //удаление элемента с ключом "number"
+// console.log(assocMas);
+
+
+
+/*** Пример задачи с Двумерным массивом
+***/
+// let matrix = [];
+
+// let countElements = +prompt("Кол-во элементов в массиве:");
+
+// for(let i = 0; i < countElements; i++) {
+//   let isArray = confirm(`${i + 1}-й элемент, массив?`); //true или false
+
+//   if(isArray) {
+//     let innerCount = +prompt("Кол-во элементов в массиве?");
+    
+//     matrix[i] = []; //элемент массива - сам является массивом
+
+//     for(let j = 0, elem = ""; j < innerCount; j++) {
+//       elem = prompt(`${j + 1}-й эл-т:`);
+
+//       if( (+elem).toString() == "NaN"
+//           && elem != "true" && elem != "false") {
+//         matrix[i][j] = elem;
+//       }
+//       else if( isNaN(+elem) ) {
+//         elem == "true" ? matrix[i][j] = true : matrix[i][j] = false;
+//       }
+//       else {
+//         matrix[i][j] = +elem;
+//       }
+//     }
+//   }
+//   else {
+//     matrix[i] = +prompt(`Введите число:`);
+//   }
+// }
+
+// // вывод элементов массива в консоль
+// for(let i in matrix) {
+//   if(Array.isArray(matrix[i])) {
+//     for(let j = 0; j < matrix[i].length; j++) {
+//       console.log(matrix[i][j]);
+//     }
+//   }
+//   else {
+//     console.log(matrix[i]);
+//   }
+// }
+
+// console.log(JSON.stringify(matrix));
+
+
+
+// for(let i in matrix) {
+//   if(i == 1) {
+//     // 1-й способ
+//     for(let j in matrix[1]) {
+//       console.log(`${+j + 1}. ${matrix[1][j]}`);
+//     }
+
+//     // 2-й способ
+//     for(let j = 0; j < matrix[1].length; j++) {
+//       console.log(`${+j + 1}. ${matrix[1][j]}`);
+//     }
+//   }
+// }
+
+
+
 // //**** Мини-калькулятор ****
 // // сложение 2-х чисел
 // // разность 2-х чисел
