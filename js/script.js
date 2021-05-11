@@ -1,3 +1,46 @@
+// ******** Пример рекурсии
+// let factRecourse = function innerFact(num) {
+//    if (num <= 1) {
+//       return 1;
+//    }
+//    return num * innerFact(num - 1);
+// }
+
+// console.log(factRecourse(5));
+
+
+
+// function multiplyEach() { 
+//    // Remove the last value of the stack 
+//    // and assign it to the variable int 
+//    int = stack.pop(); 
+//    x = stack.length; 
+//    // Base case 
+//    if (x===0) { 
+//       console.log(int); 
+//    }
+//    // Recursive case 
+//    else if(x!=0){ 
+//       stack[x - 1] = int * stack[x - 1]; 
+//       multiplyEach(); 
+//    }
+
+// function multiplyEach() { 
+//    // Remove the last value of the stack 
+//    // and assign it to the variable int 
+//    int = stack.pop(); 
+//    x = stack.length; 
+//    // Base case 
+//    if (x === 0) { 
+//       return int; 
+//    } 
+//    // Recursive case 
+//    else { 
+//       stack[x - 1] = int * stack[x - 1]; 
+//       return multiplyEach(); 
+//    } 
+// }
+
 // let num1 = 100;
 // let num2 = 200;
 
@@ -103,13 +146,13 @@
 // //Проверяет параметры
 // function checkParametrs(str1, str2) {
 //    let p1, p2; //параметры (вводимые пользователем значения)
-   
+
 //    let cancel; //флаг для анализа выхода из цикла
 //                //когда значение false - выходим из цикла
 
 //    let exit = true; //флаг для выхода из внутреннего цикла
 //                     //когда значение false - выходим из цикла
-   
+
 //    start:
 //    if(exit) {
 //       do {
@@ -358,7 +401,7 @@
 
 
 /*** Пример задачи с Двумерным массивом
-***/
+ ***/
 // let matrix = [];
 
 // let countElements = +prompt("Кол-во элементов в массиве:");
@@ -368,7 +411,7 @@
 
 //   if(isArray) {
 //     let innerCount = +prompt("Кол-во элементов в массиве?");
-    
+
 //     matrix[i] = []; //элемент массива - сам является массивом
 
 //     for(let j = 0, elem = ""; j < innerCount; j++) {
@@ -497,7 +540,7 @@
 //               alert(`Корень степени ${num2} из числа ${num1} = ${result}`);
 
 //               break;
-    
+
 //     //отмена (закрытие меню)
 //     case "0": 
 //     case null: cancel = false;
@@ -562,4 +605,3 @@
 // userName[0].toUpperCase() + userName.substring(1).toLowerCase();
 
 // prompt("Type number: ", "100");
-
