@@ -1,59 +1,193 @@
-const form = document.forms.form;
+/*** ОБЪЕКТЫ (начало) ***/
+// Литеральный способ создания объекта {}
+// let button = {
+//   id: "generateBtn",
+//   text: "Купить",
+//   class: "btn animate__animated",
+//   isBorder: false,
+// };
 
-const btnSubmit = form.elements.submit;
-const btnReset = form.elements.reset;
+function Button(id, styles, name, types) {
+   this.id = id;
+   this.text = name;
+   this.defaultStyles = {};
+   this.btnStyles = {};
 
-btnSubmit.addEventListener("click", submit);
-btnReset.addEventListener("click", clear);
+   // Формирование дефолтных свойств (для всех кнопок)
 
-function submit(e) {
-   e.preventDefault();
-
-   const login = form.elements.login;
-   const pass = form.elements.pswd;
-   const comments = form.elements.comments;
-
-   if (login.value.length >= 6 && pass.value.length >= 6) {
-      if (!document.getElementById("answer")) {
-         const p = document.createElement("p");
-         p.id = "answer";
-         p.innerHTML = `Логин пользователя: ${login.value}<br>
-										Пароль: ${pass.value}`;
-         form.insertAdjacentElement("afterend", p);
-      } else {
-         document.getElementById(
-            "answer"
-         ).innerHTML = `Логин пользователя: ${login.value}<br>
-										Пароль: ${pass.value}`;
-      }
+   for (let key in styles) {
+      this.defaultStyles[key] = styles[key];
    }
-   if (comments.value != "") {
-      document.getElementById(
-         "answer"
-      ).innerHTML += `<br>Комментарий: ${comments.value}`;
-   }
-}
 
-function clear(e) {
-   e.preventDefault();
-
-   for (let field of form) {
-      if (
-         !(
-            field.getAttribute("type") == "submit" ||
-            field.getAttribute("type") == "reset"
-         )
-      ) {
-         field.value = "";
+   // Формирование индивидуальных свойств (у каждой кнопки свои!)
+   for (let key in types) {
+      if (key == this.id) {
+         for (let prop in types[key]) {
+            this.btnStyles = types[key];
+         }
       }
    }
 
-   if (document.getElementById("answer")) {
-      document.getElementById("answer").remove();
-   }
+   // Создание кнопки (объекта DOM)
+   this.create = function () {
+      let btn = document.createElement("button"); //создание тега button
+      btn.id = this.id; //задаём атрибут id из св-ва объекта
+
+      // задаём общие свойства для кнопки
+      // key - имя свойства
+      // this.defaultStyles - свойство (объект) со стилями по умолчанию
+      for (let key in this.defaultStyles) {
+         btn.style[key] = this.defaultStyles[key];
+      }
+
+      // задаём индивидуальные свойства для кнопки
+      // key - имя свойства
+      // this.btnStyles - свойство (объект) со индивидуальными свойствами
+      for (let key in this.btnStyles) {
+         btn.style[key] = this.btnStyles[key];
+      }
+
+      btn.textContent = this.text; // задаём текст на кнопке
+      document.body.insertAdjacentElement("afterbegin", btn); // добавляем в начало body
+   };
 }
 
-// console.dir(btnSubmit);
+// массив с id кнопок
+const ids = ["buy", "more", "read", "link"];
+
+// объект с общими CSS-свойствами кнопок
+const defaultStyles = {
+   color: "white",
+   padding: "10px 15px",
+   fontSize: "14px",
+   marginRight: "15px",
+};
+
+// объект с разновидностями кнопок - содержит индивидуальные CSS-свойства
+const typeButtons = {
+   buy: {
+      backgroundColor: "darkred",
+      boxShadow: "0 0 5px 0 red",
+   },
+   more: {
+      backgroundColor: "darkblue",
+      border: "2px solid gold",
+   },
+   read: {
+      backgroundColor: "darkgreen",
+      transform: "scale(1.1)",
+   },
+   link: {
+      textDecoration: "underline",
+      backgroundColor: "transparent",
+      padding: "0",
+      color: "red",
+      border: "none",
+   },
+};
+
+// массив с названиями кнопок
+const namesButton = ["Купить", "Подробнее", "Читать", "Перейти на Яндекс"];
+// массив для хранения объектов (кнопок)
+let buttons = [];
+
+for (let i = 0; i < namesButton.length; i++) {
+   buttons[i] = new Button(ids[i], defaultStyles, namesButton[i], typeButtons);
+}
+
+for (let key in buttons) {
+   buttons[key].create();
+}
+
+// let select = document.getElementById("variantsButton");
+// let div = document.querySelector(".buttons");
+// let btn;
+
+// select.addEventListener("input", () => {
+//   if (document.getElementById(button.id)) {
+//     btn.className = `${button.class} ${select.value}`;
+//     btn.classList.add("animate__bounceIn");
+
+//     setTimeout(() => {
+//       btn.classList.remove("animate__bounceIn");
+//     }, 1000);
+//   } else {
+//     btn = document.createElement("button");
+//     btn.id = button.id;
+//     btn.textContent = button.text;
+//     btn.className = `${button.class} ${select.value}`;
+
+//     btn.classList.add("animate__backInDown");
+
+//     setTimeout(() => {
+//       btn.classList.remove("animate__backInDown");
+//     }, 2000);
+
+//     div.insertAdjacentElement("afterend", btn);
+//   }
+// });
+
+/*** ОБЪЕКТЫ (конец) ***/
+
+
+
+// /***** Пример работы с событиями (начало) *****/
+// const form = document.forms.form;
+
+// const btnSubmit = form.elements.submit;
+// const btnReset = form.elements.reset;
+
+// btnSubmit.addEventListener("click", submit);
+// btnReset.addEventListener("click", clear);
+
+// function submit(e) {
+//    e.preventDefault();
+
+//    const login = form.elements.login;
+//    const pass = form.elements.pswd;
+//    const comments = form.elements.comments;
+
+//    if (login.value.length >= 6 && pass.value.length >= 6) {
+//       if (!document.getElementById("answer")) {
+//          const p = document.createElement("p");
+//          p.id = "answer";
+//          p.innerHTML = `Логин пользователя: ${login.value}<br>
+// 										Пароль: ${pass.value}`;
+//          form.insertAdjacentElement("afterend", p);
+//       } else {
+//          document.getElementById(
+//             "answer"
+//          ).innerHTML = `Логин пользователя: ${login.value}<br>
+// 										Пароль: ${pass.value}`;
+//       }
+//    }
+//    if (comments.value != "") {
+//       document.getElementById(
+//          "answer"
+//       ).innerHTML += `<br>Комментарий: ${comments.value}`;
+//    }
+// }
+
+// function clear(e) {
+//    e.preventDefault();
+
+//    for (let field of form) {
+//       if (
+//          !(
+//             field.getAttribute("type") == "submit" ||
+//             field.getAttribute("type") == "reset"
+//          )
+//       ) {
+//          field.value = "";
+//       }
+//    }
+
+//    if (document.getElementById("answer")) {
+//       document.getElementById("answer").remove();
+//    }
+// }
+
+// // console.dir(btnSubmit);
 
 
 // Заголовок
@@ -73,7 +207,6 @@ function clear(e) {
 // button.textContent = "Показать картинку";
 // document.querySelector("h1.title").insertAdjacentElement("afterend", button);
 
-<<<<<<< HEAD
 // // Создание картинки
 // document.getElementById("btn").addEventListener("click", createImage);
 
@@ -108,42 +241,6 @@ function clear(e) {
 //       }, 500);
 //    }
 // }
-=======
-// Создание картинки
-document.getElementById("btn").addEventListener("click", createImage);
-
-function createImage() {
-   if (!document.getElementById("image")) {
-      const img = document.createElement("img");
-      img.id = "image";
-      img.alt = "Фото";
-      img.src = "./img/logo.svg";
-      img.className = "image";
-
-      setTimeout(() => {
-         document.getElementById("btn").insertAdjacentElement("afterend", img);
-         document.getElementById("btn").textContent = "Скрыть картинку";
-      }, 500);
-
-      // Клик по картинке
-      img.addEventListener("click", showMessage);
-   } else {
-      setTimeout(() => {
-         document.getElementById("image").remove();
-         if (document.getElementById("message")) {
-
-            document.getElementById("message").classList.remove("animate__rotateIn");
-            document.getElementById("message").classList.add("animate__rotateOut");
-
-            setTimeout(() => {
-               document.getElementById("message").remove();
-            }, 1000);
-         }
-         document.getElementById("btn").textContent = "Показать картинку";
-      }, 500);
-   }
-}
->>>>>>> 66f804f5a3081da3e440e7f790660eb5ea31fd95
 
 // function showMessage(e) {
 //    const src = e.target.src;
