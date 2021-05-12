@@ -73,6 +73,7 @@ function clear(e) {
 // button.textContent = "Показать картинку";
 // document.querySelector("h1.title").insertAdjacentElement("afterend", button);
 
+<<<<<<< HEAD
 // // Создание картинки
 // document.getElementById("btn").addEventListener("click", createImage);
 
@@ -107,6 +108,42 @@ function clear(e) {
 //       }, 500);
 //    }
 // }
+=======
+// Создание картинки
+document.getElementById("btn").addEventListener("click", createImage);
+
+function createImage() {
+   if (!document.getElementById("image")) {
+      const img = document.createElement("img");
+      img.id = "image";
+      img.alt = "Фото";
+      img.src = "./img/logo.svg";
+      img.className = "image";
+
+      setTimeout(() => {
+         document.getElementById("btn").insertAdjacentElement("afterend", img);
+         document.getElementById("btn").textContent = "Скрыть картинку";
+      }, 500);
+
+      // Клик по картинке
+      img.addEventListener("click", showMessage);
+   } else {
+      setTimeout(() => {
+         document.getElementById("image").remove();
+         if (document.getElementById("message")) {
+
+            document.getElementById("message").classList.remove("animate__rotateIn");
+            document.getElementById("message").classList.add("animate__rotateOut");
+
+            setTimeout(() => {
+               document.getElementById("message").remove();
+            }, 1000);
+         }
+         document.getElementById("btn").textContent = "Показать картинку";
+      }, 500);
+   }
+}
+>>>>>>> 66f804f5a3081da3e440e7f790660eb5ea31fd95
 
 // function showMessage(e) {
 //    const src = e.target.src;
