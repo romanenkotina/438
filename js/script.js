@@ -23,7 +23,7 @@ function createImage() {
       const img = document.createElement("img");
       img.id = "image";
       img.alt = "Фото";
-      img.src = "../img/logo.svg";
+      img.src = "./img/logo.svg";
       img.className = "image";
 
       setTimeout(() => {
