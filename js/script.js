@@ -1,3 +1,61 @@
+const form = document.forms.form;
+
+const btnSubmit = form.elements.submit;
+const btnReset = form.elements.reset;
+
+btnSubmit.addEventListener("click", submit);
+btnReset.addEventListener("click", clear);
+
+function submit(e) {
+   e.preventDefault();
+
+   const login = form.elements.login;
+   const pass = form.elements.pswd;
+   const comments = form.elements.comments;
+
+   if (login.value.length >= 6 && pass.value.length >= 6) {
+      if (!document.getElementById("answer")) {
+         const p = document.createElement("p");
+         p.id = "answer";
+         p.innerHTML = `Логин пользователя: ${login.value}<br>
+										Пароль: ${pass.value}`;
+         form.insertAdjacentElement("afterend", p);
+      } else {
+         document.getElementById(
+            "answer"
+         ).innerHTML = `Логин пользователя: ${login.value}<br>
+										Пароль: ${pass.value}`;
+      }
+   }
+   if (comments.value != "") {
+      document.getElementById(
+         "answer"
+      ).innerHTML += `<br>Комментарий: ${comments.value}`;
+   }
+}
+
+function clear(e) {
+   e.preventDefault();
+
+   for (let field of form) {
+      if (
+         !(
+            field.getAttribute("type") == "submit" ||
+            field.getAttribute("type") == "reset"
+         )
+      ) {
+         field.value = "";
+      }
+   }
+
+   if (document.getElementById("answer")) {
+      document.getElementById("answer").remove();
+   }
+}
+
+// console.dir(btnSubmit);
+
+
 // Заголовок
 // const title = document.createElement("h1");
 // title.style.color = "#f00f0f";
@@ -15,56 +73,56 @@
 // button.textContent = "Показать картинку";
 // document.querySelector("h1.title").insertAdjacentElement("afterend", button);
 
-// Создание картинки
-document.getElementById("btn").addEventListener("click", createImage);
+// // Создание картинки
+// document.getElementById("btn").addEventListener("click", createImage);
 
-function createImage() {
-   if (!document.getElementById("image")) {
-      const img = document.createElement("img");
-      img.id = "image";
-      img.alt = "Фото";
-      img.src = "../img/logo.svg";
-      img.className = "image";
+// function createImage() {
+//    if (!document.getElementById("image")) {
+//       const img = document.createElement("img");
+//       img.id = "image";
+//       img.alt = "Фото";
+//       img.src = "./img/logo.svg";
+//       img.className = "image";
 
-      setTimeout(() => {
-         document.getElementById("btn").insertAdjacentElement("afterend", img);
-         document.getElementById("btn").textContent = "Скрыть картинку";
-      }, 500);
+//       setTimeout(() => {
+//          document.getElementById("btn").insertAdjacentElement("afterend", img);
+//          document.getElementById("btn").textContent = "Скрыть картинку";
+//       }, 500);
 
-      // Клик по картинке
-      img.addEventListener("click", showMessage);
-   } else {
-      setTimeout(() => {
-         document.getElementById("image").remove();
-         if (document.getElementById("message")) {
+//       // Клик по картинке
+//       img.addEventListener("click", showMessage);
+//    } else {
+//       setTimeout(() => {
+//          document.getElementById("image").remove();
+//          if (document.getElementById("message")) {
 
-            document.getElementById("message").classList.remove("animate__rotateIn");
-            document.getElementById("message").classList.add("animate__rotateOut");
+//             document.getElementById("message").classList.remove("animate__rotateIn");
+//             document.getElementById("message").classList.add("animate__rotateOut");
 
-            setTimeout(() => {
-               document.getElementById("message").remove();
-            }, 1000);
-         }
-         document.getElementById("btn").textContent = "Показать картинку";
-      }, 500);
-   }
-}
+//             setTimeout(() => {
+//                document.getElementById("message").remove();
+//             }, 1000);
+//          }
+//          document.getElementById("btn").textContent = "Показать картинку";
+//       }, 500);
+//    }
+// }
 
-function showMessage(e) {
-   const src = e.target.src;
+// function showMessage(e) {
+//    const src = e.target.src;
 
-   if (!document.getElementById("message")) {
-      const div = document.createElement("div");
-      div.id = "message";
-      div.classList.add("message", "animate__animated", "animate__rotateIn");
+//    if (!document.getElementById("message")) {
+//       const div = document.createElement("div");
+//       div.id = "message";
+//       div.classList.add("message", "animate__animated", "animate__rotateIn");
 
-      const p = document.createElement("p");
-      p.innerHTML = `Адрес картинки: <strong>${src}</strong>`;
-      div.insertAdjacentElement("beforeend", p);
+//       const p = document.createElement("p");
+//       p.innerHTML = `Адрес картинки: <strong>${src}</strong>`;
+//       div.insertAdjacentElement("beforeend", p);
 
-      document.getElementById("image").insertAdjacentElement("afterend", div);
-   }
-}
+//       document.getElementById("image").insertAdjacentElement("afterend", div);
+//    }
+// }
 
 
 // ******** Пример рекурсии
