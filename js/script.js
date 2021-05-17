@@ -1,221 +1,222 @@
-const formUsers = document.forms.formUsers;
-const fldCountUsers = formUsers.elements.countUsers;
-const fldUserName = formUsers.elements.userName;
-const fldLogin = formUsers.elements.login;
-const fldStatus = formUsers.elements.status;
-const btnAddUser = formUsers.elements.addUser;
-const btnClear = formUsers.elements.clear;
+// /*** ВВОД ПОЛЬЗОВАТЕЛЕЙ (начало) ***/
+// const formUsers = document.forms.formUsers;
+// const fldCountUsers = formUsers.elements.countUsers;
+// const fldUserName = formUsers.elements.userName;
+// const fldLogin = formUsers.elements.login;
+// const fldStatus = formUsers.elements.status;
+// const btnAddUser = formUsers.elements.addUser;
+// const btnClear = formUsers.elements.clear;
 
-let userName,
-   login,
-   status = fldStatus.value,
-   countUsers;
+// let userName,
+//    login,
+//    status = fldStatus.value,
+//    countUsers;
 
-let users = []; // массив пользователей (объектов)
+// let users = []; // массив пользователей (объектов)
 
-// установка контекста работы функции setAccessFields
-let accessFldUserName = setAccessFields.bind(fldCountUsers); // контестом является объект fldCountUserd
-let accessFldLogin = setAccessFields.bind(fldUserName); // контестом является объект fldUserName
-let accessFldStatus = setAccessFields.bind(fldLogin); // контестом является объект fldLogin
+// // установка контекста работы функции setAccessFields
+// let accessFldUserName = setAccessFields.bind(fldCountUsers); // контестом является объект fldCountUserd
+// let accessFldLogin = setAccessFields.bind(fldUserName); // контестом является объект fldUserName
+// let accessFldStatus = setAccessFields.bind(fldLogin); // контестом является объект fldLogin
 
-// обработчики события ввода значения в поля: "Кол-во пользователей", "Имя пользователя" и "Логин"
-fldCountUsers.addEventListener("input", accessFldUserName);
-fldUserName.addEventListener("input", accessFldLogin);
-fldLogin.addEventListener("input", accessFldStatus);
+// // обработчики события ввода значения в поля: "Кол-во пользователей", "Имя пользователя" и "Логин"
+// fldCountUsers.addEventListener("input", accessFldUserName);
+// fldUserName.addEventListener("input", accessFldLogin);
+// fldLogin.addEventListener("input", accessFldStatus);
 
-// обработчик события выбора из выпадающего списка "Статус"
-fldStatus.addEventListener("change", () => (status = fldStatus.value));
+// // обработчик события выбора из выпадающего списка "Статус"
+// fldStatus.addEventListener("change", () => (status = fldStatus.value));
 
-// обработчики кнопки "Добавить" и "Очистить"
-btnAddUser.addEventListener("click", (e) => addUsers(e));
-btnClear.addEventListener("click", (e) => clearFields(e));
+// // обработчики кнопки "Добавить" и "Очистить"
+// btnAddUser.addEventListener("click", (e) => addUsers(e));
+// btnClear.addEventListener("click", (e) => clearFields(e));
 
-// обработчик нажатия клавиши Enter для добавления пользователя
-window.addEventListener("keydown", (e) => {
-   if (e.key == "Enter") {
-      if (
-         +fldCountUsers.value != 0 &&
-         fldUserName.value != "" &&
-         fldLogin.value != ""
-      ) {
-         addUsers(e);
-      }
-   }
-});
+// // обработчик нажатия клавиши Enter для добавления пользователя
+// window.addEventListener("keydown", (e) => {
+//    if (e.key == "Enter") {
+//       if (
+//          +fldCountUsers.value != 0 &&
+//          fldUserName.value != "" &&
+//          fldLogin.value != ""
+//       ) {
+//          addUsers(e);
+//       }
+//    }
+// });
 
-// обработчик нажатия клавиши Escape для очистки полей формы
-window.addEventListener("keydown", (e) => {
-   if (e.key === "Escape") {
-      clearFields(e);
-   }
-});
+// // обработчик нажатия клавиши Escape для очистки полей формы
+// window.addEventListener("keydown", (e) => {
+//    if (e.key === "Escape") {
+//       clearFields(e);
+//    }
+// });
 
-function addUsers(e) {
-   countUsers = +fldCountUsers.value; // кол-во пользователей
-   userName = fldUserName.value; // имя пользователя
-   login = fldLogin.value; // логин
+// function addUsers(e) {
+//    countUsers = +fldCountUsers.value; // кол-во пользователей
+//    userName = fldUserName.value; // имя пользователя
+//    login = fldLogin.value; // логин
 
-   createUser(userName, login, status);
+//    createUser(userName, login, status);
 
-   fldCountUsers.value = --countUsers;
+//    fldCountUsers.value = --countUsers;
 
-   fldUserName.value = "";
-   fldUserName.focus();
-   fldLogin.value = "";
-   fldStatus.options.selectedIndex = 0;
+//    fldUserName.value = "";
+//    fldUserName.focus();
+//    fldLogin.value = "";
+//    fldStatus.options.selectedIndex = 0;
 
-   if (countUsers == 0) {
-      clearFields(e);
-      // getInfoUsers();
-   }
-}
+//    if (countUsers == 0) {
+//       clearFields(e);
+//       // getInfoUsers();
+//    }
+// }
 
-// Функция создания объекта user (пользователь) и добавление его в массив "users"
-function createUser(name, login, status) {
-   let user; // пользователь (объект)
-   user = new User(name, login, status);
+// // Функция создания объекта user (пользователь) и добавление его в массив "users"
+// function createUser(name, login, status) {
+//    let user; // пользователь (объект)
+//    user = new User(name, login, status);
 
-   users.push(user);
-}
+//    users.push(user);
+// }
 
-// Функция разблокировки/блокировки полей (логин и статус)
-// this - является объектом fldUserName или fldLogin в зависимости от привязки, заданной в методе bind
-function setAccessFields(e) {
-   let fldVal = this.value.trim();
+// // Функция разблокировки/блокировки полей (логин и статус)
+// // this - является объектом fldUserName или fldLogin в зависимости от привязки, заданной в методе bind
+// function setAccessFields(e) {
+//    let fldVal = this.value.trim();
 
-   switch (this.name) {
-      case "countUsers":
-         +this.value != 0 ?
-            fldUserName.removeAttribute("disabled") :
-            clearFields(e);
-         break;
-      case "userName":
-         if (fldVal != "") {
-            fldLogin.removeAttribute("disabled");
-            btnClear.removeAttribute("disabled");
-         } else {
-            if (fldLogin.value != "") {
-               fldLogin.value = "";
-            }
-            fldLogin.setAttribute("disabled", "");
-            fldStatus.setAttribute("disabled", "");
-            btnClear.setAttribute("disabled", "");
-            btnAddUser.setAttribute("disabled", "");
-         }
-         break;
-      case "login":
-         if (fldVal != "") {
-            fldStatus.removeAttribute("disabled");
-            btnAddUser.removeAttribute("disabled");
-         } else {
-            fldStatus.setAttribute("disabled", "");
-            btnAddUser.setAttribute("disabled", "");
-         }
-         break;
-   }
-}
+//    switch (this.name) {
+//       case "countUsers":
+//          +this.value != 0 ?
+//             fldUserName.removeAttribute("disabled") :
+//             clearFields(e);
+//          break;
+//       case "userName":
+//          if (fldVal != "") {
+//             fldLogin.removeAttribute("disabled");
+//             btnClear.removeAttribute("disabled");
+//          } else {
+//             if (fldLogin.value != "") {
+//                fldLogin.value = "";
+//             }
+//             fldLogin.setAttribute("disabled", "");
+//             fldStatus.setAttribute("disabled", "");
+//             btnClear.setAttribute("disabled", "");
+//             btnAddUser.setAttribute("disabled", "");
+//          }
+//          break;
+//       case "login":
+//          if (fldVal != "") {
+//             fldStatus.removeAttribute("disabled");
+//             btnAddUser.removeAttribute("disabled");
+//          } else {
+//             fldStatus.setAttribute("disabled", "");
+//             btnAddUser.setAttribute("disabled", "");
+//          }
+//          break;
+//    }
+// }
 
-// Функция очистки полей формы
-function clearFields(e) {
-   e.preventDefault();
-   for (let field of formUsers) {
-      if (field != fldCountUsers) {
-         if (field != btnAddUser && field != btnClear && field != fldStatus) {
-            field.value = "";
-         }
-         field.setAttribute("disabled", "disabled");
-      } else {
-         fldCountUsers.value = 0;
-         fldStatus.options.selectedIndex = 0;
-      }
-   }
-}
+// // Функция очистки полей формы
+// function clearFields(e) {
+//    e.preventDefault();
+//    for (let field of formUsers) {
+//       if (field != fldCountUsers) {
+//          if (field != btnAddUser && field != btnClear && field != fldStatus) {
+//             field.value = "";
+//          }
+//          field.setAttribute("disabled", "disabled");
+//       } else {
+//          fldCountUsers.value = 0;
+//          fldStatus.options.selectedIndex = 0;
+//       }
+//    }
+// }
 
-function getInfoUsers() {
-   for (let user of users) {
-      console.log(user.getUserInfo());
-   }
-}
+// function getInfoUsers() {
+//    for (let user of users) {
+//       console.log(user.getUserInfo());
+//    }
+// }
 
-class User {
-   //name, login, isAdmin - формальные параметры
+// class User {
+//    //name, login, isAdmin - формальные параметры
 
-   static MAX_COUNT_USERS = 5; //максимально возможное число пользователей
-   static #countUsers = 0; //кол-во пользователей
+//    static MAX_COUNT_USERS = 5; //максимально возможное число пользователей
+//    static #countUsers = 0; //кол-во пользователей
 
-   #name;
-   #login;
-   #status;
+//    #name;
+//    #login;
+//    #status;
 
-   constructor(name, login, status) {
-      User.#countUsers++;
+//    constructor(name, login, status) {
+//       User.#countUsers++;
 
-      if (User.#countUsers > User.MAX_COUNT_USERS) {
-         console.log("Превышение числа пользователей!");
-         // throw false;
-      } else {
-         this.#name = name;
-         this.#login = login;
-         this.#status = status;
-      }
-   }
+//       if (User.#countUsers > User.MAX_COUNT_USERS) {
+//          console.log("Превышение числа пользователей!");
+//          // throw false;
+//       } else {
+//          this.#name = name;
+//          this.#login = login;
+//          this.#status = status;
+//       }
+//    }
 
-   get Name() {
-      return this.#name;
-   }
-   set Name(value) {
-      if (typeof value == "string" && value.length >= 3 && value.length <= 20) {
-         this.#name = value;
-      } else {
-         console.log(
-            "Значение имени должно быть строковым и соотвествовать определённому кол-ву символов!"
-         );
-      }
-   }
+//    get Name() {
+//       return this.#name;
+//    }
+//    set Name(value) {
+//       if (typeof value == "string" && value.length >= 3 && value.length <= 20) {
+//          this.#name = value;
+//       } else {
+//          console.log(
+//             "Значение имени должно быть строковым и соотвествовать определённому кол-ву символов!"
+//          );
+//       }
+//    }
 
-   get Login() {
-      return this.#login;
-   }
-   set Login(value) {
-      if (typeof value == "string") {
-         this.#login = value;
-      } else {
-         console.log("Значение логина должно быть строковым!");
-      }
-   }
+//    get Login() {
+//       return this.#login;
+//    }
+//    set Login(value) {
+//       if (typeof value == "string") {
+//          this.#login = value;
+//       } else {
+//          console.log("Значение логина должно быть строковым!");
+//       }
+//    }
 
-   get Status() {
-      return this.#status;
-   }
-   set Status(value) {
-      if (typeof value == "string") {
-         this.#status = value;
-      } else {
-         console.log("Значение должно быть строкового типа!");
-      }
-   }
+//    get Status() {
+//       return this.#status;
+//    }
+//    set Status(value) {
+//       if (typeof value == "string") {
+//          this.#status = value;
+//       } else {
+//          console.log("Значение должно быть строкового типа!");
+//       }
+//    }
 
-   getUserInfo() {
-      let str = "Информация о пользователе:".toUpperCase() + "\n";
+//    getUserInfo() {
+//       let str = "Информация о пользователе:".toUpperCase() + "\n";
 
-      str += `Имя: ${this.Name}\n`;
-      str += `Логин: ${this.Login}\n`;
+//       str += `Имя: ${this.Name}\n`;
+//       str += `Логин: ${this.Login}\n`;
 
-      if (this.Status == "admin") {
-         str += `Является админом!`;
-      } else {
-         str += `Обычный пользователь :(`;
-      }
+//       if (this.Status == "admin") {
+//          str += `Является админом!`;
+//       } else {
+//          str += `Обычный пользователь :(`;
+//       }
 
-      return str;
-   }
+//       return str;
+//    }
 
-   changeUserName() {
-      this.Name = prompt("Новое имя:");
-      return this.getUserInfo();
-   }
-}
-
+//    changeUserName() {
+//       this.Name = prompt("Новое имя:");
+//       return this.getUserInfo();
+//    }
+// }
+// /*** ВВОД ПОЛЬЗОВАТЕЛЕЙ (конец) ***/
 
 
 // /*** ОБЪЕКТЫ (начало) ***/
