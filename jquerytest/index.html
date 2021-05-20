@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>jQuery test</title>
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"	integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+	<!-- + каталог товаров: 
+		+ основные никуда не ведут
+		+ раздел "для взрослых"
+	- при нажатии на раздел происходит проверка, если:
+		+ программа уже знает наш возраст, перейти в раздел
+		+ если не знает, должно всплыть окошко
+	+ всплывающее окошко для подтверждения возраста
+	+ в окошке надо ввести дату рождения | просто указать возраст
+	+ программа должна посчитать, исполнилось ли пользователю 18
+	+ кнопка "перейти" недоступна:
+		+ пока не введена дата рождения
+		+ если возраст меньше 18
+	+ кнопка "закрыть всегда доступна"
+	+ если возраст 18, кнопка перейти доступна
+	+ открывает страница для взрослых
+	+ на этой странице есть кнопка назад
+	- при возращении назад программа должна запомнить, есть ли нам 18
+	- и добавить затемнение фона, потому что я разошлась лол
+
+	мои проблемы:
+	+ не могу заставить инпут меняться
+	+ не сделала дату
+	- не сделала запоминание через куки
+	- не могу использовать одновременно две даты
+	-->
+
+<!----- HEADER (начало) ----->
+<header>
+		<h1 class="container">Название интернет магазина</h1>
+		<p class="container">Приятных покупок!*</p>
+</header>
+<!-- HEADER (конец) -->
+
+<main>
+
+<!-- OVERLAY (начало) -->
+<div class="popup-overlay">
+	<div class="popup-content">
+		<h2>Секундочку!</h2>
+		<p>Сперва укажите свой возраст!<br>Кликайте кнопки вверх и вниз, чтобы изменить ответ!<br>Или просто укажите дату рождения!</p>
+		<!-- <input id="ageinput" type="number" min="1" max="100" value="17"> -->
+		<input id="bdayinput" type="date">
+		<div class="container buttons">
+			<button class="goto btn btn-primary" disabled>Перейти</button>
+			<button class="close btn btn-primary">Закрыть</button>
+		</div>
+	</div>
+</div>
+<!-- OVERLAY (конец) -->
+
+<!----- КАТАЛОГ (начало) ----->
+	<section class="portfolio">
+		<div class="container">
+			<div class="portfolio-content">
+				<h2>Наши разделы</h2>
+				<div class="portfolio-list">
+					<div class="list-item">
+						<a href="#">Для дома</a>
+					</div>
+
+					<div class="list-item">
+						<a href="#">Для кухни</a>
+					</div>
+
+					<div class="list-item">
+						<a href="#">Для ванной</a>
+					</div>
+
+					<div class="list-item">
+						<a href="#">Для спальни</a>
+					</div>
+
+					<div class="list-item">
+						<a href="#">Для дачи</a>
+					</div>
+
+					<div class="list-item">
+						<a id="agecheck" href="#">Для взрослых<br>18+</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</main>
+<!-- КАТАЛОГ (конец) -->
+
+<!----- FOOTER (начало) ----->
+<footer>
+		<h3 class="container">Название интернет магазина</h3>
+		<div class="container copyright">
+			<p>© NazvanieInternetMazgazina, 2021</p>
+			<p>*это тестовый сайт, ничего тут купить нельзя :(</p>
+		</div>
+</footer>
+<!-- FOOTER (конец) -->
+
+	
+
+<!-- ******** ЗАПИСИ С ЛЕКЦИИ -->
+
+<!-- <h1 id="h1" class="header">Hello world</h1>
+<h2 id="h11" class="header">Hello world</h2>
+<h3 id="h111">Hello world</h3> -->
+
+<!-- <input type="text" name="input1">
+<input type="text" name="input2" class="class1 class2">
+<textarea class="class1 class2"> -->
+
+<!-- <div></div> -->
+
+<!-- <input> -->
+
+<!-- <input>
+<input>
+<input>
+<input>
+<input> -->
+
+<!-- <button id="btn1">click me</button>
+<button id="btn2">trigger event1</button> -->
+
+<!-- <button id="btn1">hide</button>
+<button id="btn2">show</button> -->
+
+<!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt consectetur perspiciatis ut reprehenderit eius rem? Quidem amet beatae accusamus cum, cumque quo minus ipsam dicta assumenda porro neque quisquam autem!</p> -->
+
+<!-- <div style="width:150px; height:150px; background: green;"></div> -->
+
+<script src="jquery-3.6.0.min.js"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script> -->
+<script src="script.js"></script>
+
+</body>
+</html>
