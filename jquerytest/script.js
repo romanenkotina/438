@@ -1,36 +1,51 @@
-// let adult = true;
-let adult = false; // по умолчанию считает пользователя несовершеннолетним
-let age;
+let adult = false; // статус пользователя: несовершеннолетний
 
+// пользователь нажал на раздел 18+
 $("#agecheck").on("click", () => {
-	// проверяет 
+	// проверяет статус пользователя
 	if (!adult) {
-		// открывает окно
+		// если несовершеннолетний, открывает модальное окно
 		$(".popup-overlay, .popup-content").fadeIn('slow')
+		// пользователь нажал на кнопку перейти
+		// переводит пользователя в раздел и закрывает модальное окно
+		$('.goto').on('click', () => {
+			window.open("adult.html")
+			$(".popup-overlay, .popup-content").fadeOut('slow');
+			// меняет статус пользователя на совершеннолетнего
+			adult = true
+			// alert("Замечательно! Мы запомним это и в дальнейшем будем пускать вас в раздел сразу!")
+		})
 	} else {
-		// переходит сразу в раздел
-		// только почему-то приходится дважды вбивать
+		// если совершеннолетний, переходит сразу в раздел 18+
+		// только почему-то приходится дважды кликать
 		$('#agecheck').on('click', () => {
 			window.open("adult.html")
 		})}
 	})
 
-// переводит пользователя в раздел
-// закрывает окошко
-$('.goto').on('click' , () => {
-	window.open("adult.html")
-	$(".popup-overlay, .popup-content").fadeOut('slow');
-	// меняет adult на true
-	adult = true
-	alert("Замечательно! Мы запомним это и в дальнейшем будем пускать вас в раздел сразу!")
-})
-
-// закрывает окно
+// пользователь нажимает Закрыть
+// закрывает модальное окно
 $(".close").on("click", () => {
 	$(".popup-overlay, .popup-content").fadeOut('slow');
 });
 
-// скрывает кнопку, пока возраст меньше 18
+// скрывает кнопку, пока возраст пользователя меньше 18
+
+// ПЕРВЫЙ ВАРИАНТ КАЛЕНДАРЬ
+
+// те же условия для календаря
+// меняет значения тоже по клику, ввел дату - кликнул рядом
+$('#bdayinput, .popup-overlay').on('click', () => {
+	const now = Date.now()
+	const bday = document.getElementById('bdayinput').value
+	const diff = Math.abs(now - Date.parse(bday))
+	const calcage = Math.floor(diff / (1000 * 60 * 60 * 24 * 365))
+	if (calcage >= 18) {
+		$('.goto').prop("disabled", false)
+	} else {
+		$('.goto').prop("disabled", true)
+	}
+})
 
 // ПЕРВЫЙ ВАРИАНТ ПРОСТО ВВОД ВОЗРАСТА
 // корявое решение проблемы с тем, 
@@ -48,23 +63,6 @@ $(".close").on("click", () => {
 // 	$('.goto').prop("disabled", true)
 // }
 // })
-
-// ВТОРОЙ ВАРИАНТ КАЛЕНДАРЬ
-// подключение календаря отключает верхний способ
-
-// те же условия для календаря
-// меняет значения тоже по клику, ввел дату - кликнул рядом
-$('#bdayinput, .popup-overlay').on('click', () => {
-	const now = Date.now()
-	const bday = document.getElementById('bdayinput').value
-	const diff = Math.abs(now - Date.parse(bday))
-	const calcage = Math.floor(diff / (1000 * 60 * 60 * 24 * 365))
-	if (calcage >= 18) {
-		$('.goto').prop("disabled", false)
-	} else {
-		$('.goto').prop("disabled", true)
-	}
-})
 
 
 
