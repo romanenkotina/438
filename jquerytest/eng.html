@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>English version</title>
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+	<header>
+		<h1 class="container">Online store</h1>
+		<p class="container">Have a great time shopping!*</p>
+		<a class="langchange" href="index.html">Русская версия</a>
+	</header>
+
+	<div class="sticky-footer">
+		<main>
+			<div class="popup">
+				<h2>Not so fast!</h2>
+				<p>This page is for adults only!<br>Please enter birthday to proceed!</p>
+				<input id="bdayinput" type="date" min="1900-01-01">
+				<div class="container buttons">
+					<button class="goto btn btn-primary" disabled>Proceed</button>
+					<button class="close btn btn-primary">Close</button>
+				</div>
+			</div>
+
+			<section class="portfolio">
+				<div class="container">
+					<div class="portfolio-content">
+						<h2>Catalogue</h2>
+						<div class="portfolio-list">
+							<a class="list-item" href="#">Home</a>
+							<a class="list-item" href="#">Kitchen</a>
+							<a class="list-item" href="#">Bathroom</a>
+							<a class="list-item" href="#">Bedroom</a>
+							<a class="list-item" href="#">Outdoors</a>
+							<a class="list-item" id="agecheck" href="#">Adults only<br>18+</a>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<footer>
+			<h3 class="container">Online store</h3>
+			<div class="container copyright">
+				<p>© OnlineStore, 2021</p>
+				<p>*this is a test site, you can't buy anything here :(</p>
+			</div>
+		</footer>
+	</div>
+
+	<script src="jquery-3.6.0.min.js"></script>
+	<script src="script.js"></script>
+
+</body>
+
+</html>
