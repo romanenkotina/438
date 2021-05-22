@@ -3,6 +3,7 @@
 // перенаправить разноязычные страницы на разных уточек
 
 let adult = false; // статус пользователя: несовершеннолетний
+console.log(adult);
 
 $(document).ready(function ($) {
   // пользователь нажал на раздел 18+
@@ -15,7 +16,8 @@ $(document).ready(function ($) {
       // пользователь нажал на кнопку перейти
       // переводит пользователя в раздел и закрывает модальное окно
       $(".goto").on("click", () => {
-        window.location.href = "adult.html";
+//         window.location.href = "adult.html";
+        window.open("adult.html");
         $(".popup-fade").fadeOut("slow");
         // меняет статус пользователя на совершеннолетнего
         adult = true;
@@ -25,7 +27,8 @@ $(document).ready(function ($) {
       // если совершеннолетний, переходит сразу в раздел 18+
       // только почему-то приходится дважды кликать
       $("#agecheck").on("click", () => {
-        window.location.href = "adult.html";
+//         window.location.href = "adult.html";
+        window.open("adult.html");
       });
     }
   });
