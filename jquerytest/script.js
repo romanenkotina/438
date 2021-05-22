@@ -2,14 +2,14 @@
 // если сделать куки и он работает, как я думаю, найти способ стирать этот куки
 // перенаправить разноязычные страницы на разных уточек
 
-// let adult = false; // статус пользователя: несовершеннолетний
+let adult = false; // статус пользователя: несовершеннолетний
 
 $(document).ready(function ($) {
   // пользователь нажал на раздел 18+
   $("#agecheck").on("click", () => {
     // проверяет статус пользователя
-    // if (!adult) {
-    if (getCookie("over-18") == "true") {
+    if (!adult) {
+//     if (getCookie("over-18") == "true") {
       // если несовершеннолетний, открывает модальное окно
       $(".popup-fade").fadeIn("slow");
       // пользователь нажал на кнопку перейти
@@ -18,8 +18,8 @@ $(document).ready(function ($) {
         window.location.href = "adult.html";
         $(".popup-fade").fadeOut("slow");
         // меняет статус пользователя на совершеннолетнего
-        // adult = true;
-        document.cookie = "over-18=true";
+        adult = true;
+//         document.cookie = "over-18=true";
       });
     } else {
       // если совершеннолетний, переходит сразу в раздел 18+
@@ -30,12 +30,12 @@ $(document).ready(function ($) {
     }
   });
 
-  function getCookie(name) {
-    let cookies = document.cookie || "";
-    let cookie =
-      cookies.split("; ").find((row) => row.startsWith(name + "=")) || "";
-    return cookie.split("=")[1];
-  }
+//   function getCookie(name) {
+//     let cookies = document.cookie || "";
+//     let cookie =
+//       cookies.split("; ").find((row) => row.startsWith(name + "=")) || "";
+//     return cookie.split("=")[1];
+//   }
 
   // пользователь нажимает Закрыть
   // закрывает модальное окно
